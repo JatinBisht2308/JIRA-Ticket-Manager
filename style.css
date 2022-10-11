@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.toolbox-cont{
+    height: 5rem;
+    background: #4b4b4b;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.toolbox-cont > *{
+    margin-left: 4rem;
+    border-radius: 2px;
+}
+.toolbox-priority-cont{
+    width: 16rem;
+    background: rgba(0, 0, 0, 0.438);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.toolbox-add-delete{
+   height: 3rem;
+   width: 8rem;
+   background: lightpink;
+}
+.color{
+    height: 2rem;
+    width: 3rem;
+    background: lightsalmon;
+}
+.pink{
+  background: #ff4d4d;
+}
+.blue{
+  background: #18dcff;
+}
+.green{
+  background: #32ff7e;
+}
+.purple{
+    background: #7158e2;
+}
