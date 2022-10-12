@@ -4,10 +4,11 @@
 body{
     margin: 0;
     padding: 0;
+    background: #2C3A47;
 }
 .toolbox-cont{
     height: 5rem;
-    background: #4b4b4b;
+    background: #25313c;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -27,8 +28,18 @@ body{
 .toolbox-add-delete{
    height: 3rem;
    width: 8rem;
-   background: lightpink;
+   background: rgba(0, 0, 0, 0.438);
+   display: flex;
+   /* justify-content: center; */
 }
+.toolbox-add-delete > *{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+}
+
 .color{
     height: 2rem;
     width: 3rem;
@@ -45,4 +56,43 @@ body{
 }
 .purple{
     background: #7158e2;
+}
+.toolbox-add-delete>*:hover{
+  background: #a5b1c25c;
+}
+.modal{
+    height: 45vh;
+    width: 50vw;
+    background: lightblue;
+    position: absolute;
+    top: calc((100vh - 45vh)/2);
+    left: calc( (100vw - 50vw) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.txt-cont{
+    height: 100%;
+    width: 75%;
+    /* textarea border nhi aaega */
+    border: none;
+    /* on typing text on text area border outline will not come */
+    outline: none;
+    /* textarea resize option will not come */
+    resize: none;
+    background: rgba(100, 171, 226, 0);
+}
+.priority-selection{
+    /* background: #000; */
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #D6A2E8;
+}
+.colo{
+    width: 70%;
+    height: 18%;
 }
