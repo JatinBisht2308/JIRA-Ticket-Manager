@@ -1,98 +1,123 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    margin: 0;
-    padding: 0;
-    background: #2C3A47;
+body {
+  margin: 0;
+  padding: 0;
+  background: #2c3a47;
 }
-.toolbox-cont{
-    height: 5rem;
-    background: #25313c;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+.toolbox-cont {
+  height: 5rem;
+  background: #25313c;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
-.toolbox-cont > *{
-    margin-left: 4rem;
-    border-radius: 2px;
+.toolbox-cont > * {
+  margin-left: 4rem;
+  border-radius: 2px;
 }
-.toolbox-priority-cont{
-    width: 16rem;
-    background: rgba(0, 0, 0, 0.438);
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.toolbox-priority-cont {
+  width: 16rem;
+  background: rgba(0, 0, 0, 0.438);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.toolbox-add-delete{
-   height: 3rem;
-   width: 8rem;
-   background: rgba(0, 0, 0, 0.438);
-   display: flex;
-   /* justify-content: center; */
+.toolbox-add-delete {
+  height: 3rem;
+  width: 8rem;
+  background: rgba(0, 0, 0, 0.438);
+  display: flex;
+  /* justify-content: center; */
 }
-.toolbox-add-delete > *{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.2rem;
+.toolbox-add-delete > * {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
 }
 
-.color{
-    height: 2rem;
-    width: 3rem;
-    background: lightsalmon;
+.color {
+  height: 1.5rem;
+  width: 2.5rem;
+  background: lightsalmon;
 }
-.pink{
+.pink {
   background: #ff4d4d;
 }
-.blue{
+.blue {
   background: #18dcff;
 }
-.green{
+.green {
   background: #32ff7e;
 }
-.purple{
-    background: #7158e2;
+.purple {
+  background: #7158e2;
 }
-.toolbox-add-delete>*:hover{
+.toolbox-add-delete > *:hover {
   background: #a5b1c25c;
 }
-.modal{
-    height: 45vh;
-    width: 50vw;
-    background: lightblue;
-    position: absolute;
-    top: calc((100vh - 45vh)/2);
-    left: calc( (100vw - 50vw) / 2);
+.modal {
+  height: 45vh;
+  width: 50vw;
+  background: lightblue;
+  position: absolute;
+  top: calc((100vh - 45vh) / 2);
+  left: calc((100vw - 50vw) / 2);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.txt-cont {
+  height: 100%;
+  width: 75%;
+  /* textarea border nhi aaega */
+  border: none;
+  /* on typing text on text area border outline will not come */
+  outline: none;
+  /* textarea resize option will not come */
+  resize: none;
+  background: rgba(100, 171, 226, 0);
+  padding: 1.5rem;
+  font-size: 1.2rem;
+}
+.priority-selection {
+  /* background: #000; */
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #d6a2e8;
+}
+.colo {
+  width: 65%;
+  height: 18%;
+}
+/* this class highlight wil defaultly highlight the purple category of priority of ticket */
+.highlight {
+  border: 0.2rem solid rgba(10, 8, 10, 0.6);
+  box-shadow: 5px 6px rgba(10, 8, 10, 0.8);
+}
+
+.ticket-cont{
+    width: 20rem;
+    height: 15rem;
+    background: whitesmoke;
+}
+.ticket-color{
+    height: 2.5rem;
+    background: #ff4d4d;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
-.txt-cont{
-    height: 100%;
-    width: 75%;
-    /* textarea border nhi aaega */
-    border: none;
-    /* on typing text on text area border outline will not come */
-    outline: none;
-    /* textarea resize option will not come */
-    resize: none;
-    background: rgba(100, 171, 226, 0);
-}
-.priority-selection{
-    /* background: #000; */
-    width: 25%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    background: #D6A2E8;
-}
-.colo{
-    width: 70%;
-    height: 18%;
+.ticket-heading{
+    color: black;
+    font-size: 1.5rem;
+    font-family: sans-serif;
 }
