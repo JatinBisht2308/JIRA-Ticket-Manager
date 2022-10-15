@@ -48,8 +48,8 @@ body {
 .pink {
   background: #ff4d4d;
 }
-.blue {
-  background: #18dcff;
+.yellow {
+  background: yellow;
 }
 .green {
   background: #32ff7e;
@@ -59,6 +59,16 @@ body {
 }
 .toolbox-add-delete > *:hover {
   background: #a5b1c25c;
+}
+
+/* main container which contains the ticekts */
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    gap: 2rem;
 }
 .modal {
   height: 45vh;
@@ -71,7 +81,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.txt-cont {
+.text-cont {
   height: 100%;
   width: 75%;
   /* textarea border nhi aaega */
@@ -101,23 +111,44 @@ body {
 /* this class highlight wil defaultly highlight the purple category of priority of ticket */
 .highlight {
   border: 0.2rem solid rgba(10, 8, 10, 0.6);
-  box-shadow: 5px 6px rgba(10, 8, 10, 0.8);
 }
 
 .ticket-cont{
     width: 20rem;
-    height: 15rem;
-    background: whitesmoke;
+    height: 12.5rem;
+    /* background: whitesmoke; */
+    margin-right: 2rem;
+    margin-bottom: 2rem;
 }
 .ticket-color{
     height: 2.5rem;
-    background: #ff4d4d;
+    /* background: #ff4d4d; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 0.5rem;
 }
 .ticket-heading{
     color: black;
     font-size: 1.5rem;
     font-family: sans-serif;
+}
+.task-area{
+    padding: 0.5rem;
+    height: calc(100% - 2.5rem);
+    background: rgba(166, 220, 207, 0.957);
+}
+.ticket-delete {
+    height: 2rem;
+    display: flex;
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    justify-content: flex-end;
+    background: rgba(166, 220, 207, 0.957);
+}
+.fa-trash-can{
+    color: #25313c;
+}
+.fa-trash-can:hover{
+    color: black;
 }
