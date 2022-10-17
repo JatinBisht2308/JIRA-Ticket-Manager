@@ -9,11 +9,14 @@ let mainCont = document.querySelector(".main-container");
 // selecting the text-Cont for deleting the likha hua data after creating the ticket
 let textCont = document.querySelector(".text-cont");
 // colors we are having in the priorities
-let colors = ["#ff4d4d", "yellow", "#32ff7e", "#7158e2"];
+let colors = ["pink", "yellow", "green", "purple"];
 // setting the default priority color inside the modal
 let defaultPriorityColor = colors[3];
 // selecting the tag for the colors of the priority inside the modal
 let allPriorityColor = document.querySelectorAll(".colo");
+
+// accessing the colors for the filter of the ticket on the basis of the color
+let toolBoxColors = document.querySelectorAll(".color");
 
 // Listerner for the modal priority coloring
 allPriorityColor.forEach((colorElement, index) => {
@@ -42,7 +45,7 @@ plusBtn.addEventListener("click", (e) => {
 modalCont.addEventListener("keydown", (e) => {
   let key = e.key;
   if (key == "Enter") {
-    generateTicket(defaultPriorityColor, textCont.value, "Untitled");
+    generateTicket(defaultPriorityColor, textCont.value, "Set Heading");
     modalCont.style.display = "none";
     addFlag = false;
     // after this the modalCont will be closed but the text eneter inside its text area(that text inside the text area is the textarea value) will remains the same so we have to remove the text area text also. below code will do that..
@@ -54,17 +57,17 @@ function generateTicket(ticketColor, ticketTask, ticketHeading) {
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
   ticketCont.innerHTML = `  
-  <div class="ticket-color" style="background-color:${ticketColor}">
-      <h5 class="ticket-heading">${ticketHeading}</h5>
-  </div>
-  <div class="task-area"> ${ticketTask}</div> 
+  <div class="ticket-color ${ticketColor}"></div>
+  <div class="ticket-heading" contenteditable="true"><strong>${ticketHeading}</strong></div>
+  <div class="task-area" contenteditable="true" > ${ticketTask}</div> 
   <div class="ticket-delete">
   <i class="fa-solid fa-trash-can"></i>
         </div>
   `;
   mainCont.appendChild(ticketCont);
-//   call the remove ticket function  
   removeTicket(ticketCont);
+//   handle the color of the ticket by clicking on the ticket
+   handleColorChange(ticketCont); 
 }
 
 function removeTicket(ticket){
@@ -74,4 +77,43 @@ function removeTicket(ticket){
         console.log("jatin");
         ticket.remove();
      })
+}
+
+// handling the color changing  of the ticket(priority changing)
+function handleColorChange(ticket){
+    let ticketColor= ticket.querySelector(".ticket-color");
+    ticketColor.addEventListener("click",(e) =>{
+        let currentTicketColor = ticketColor.classList[1];
+        //  get ticket color index
+        let currentColorIndex = colors.findIndex((color) => {
+           return currentTicketColor === color;
+        });
+        currentColorIndex++;
+        let newColorIndex = currentColorIndex % 4;
+        let newTicketColor = colors[newColorIndex];
+        ticketColor.classList.remove(currentTicketColor);
+        ticketColor.classList.add(newTicketColor);
+    })
+}
+
+// this function will filter the tickets according to the color of the toolbox
+for(let i=0;i<toolBoxColors.length;i++)
+{
+   toolBoxColors[i].addEventListener("click",(e) =>{
+        let currentFilterColor = toolBoxColors[i].classList[0];
+        console.log(currentFilterColor);
+        
+        let allTickets = document.querySelectorAll(".ticket-cont");
+        for(let j=0;j<allTickets.length;j++)
+        {
+            let ticketColor = allTickets[j].querySelector(".ticket-color");
+            if(ticketColor.classList[1] != currentFilterColor)
+            {
+                allTickets[j].style.display = "none";
+            }
+            else{
+                allTickets[j].style.display = "block";
+            }
+        }
+   })
 }

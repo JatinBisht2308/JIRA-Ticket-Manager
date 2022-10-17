@@ -121,22 +121,21 @@ body {
     margin-bottom: 2rem;
 }
 .ticket-color{
-    height: 2.5rem;
-    /* background: #ff4d4d; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0.5rem;
+    height: 1rem;
 }
 .ticket-heading{
-    color: black;
-    font-size: 1.5rem;
-    font-family: sans-serif;
+   height: 2rem;
+   padding: 0.5rem;
+   background: rgba(166, 220, 207, 0.957);
+   font-size: 1.3rem;
+   outline: none;
 }
 .task-area{
     padding: 0.5rem;
-    height: calc(100% - 2.5rem);
+    height: calc(100% - 5rem);
     background: rgba(166, 220, 207, 0.957);
+    outline: none;
+    font-size: 1.2rem;
 }
 .ticket-delete {
     height: 2rem;
