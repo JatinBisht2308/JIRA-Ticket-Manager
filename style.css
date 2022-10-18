@@ -4,11 +4,11 @@
 body {
   margin: 0;
   padding: 0;
-  background: #2c3a47;
+  background: #22272e;
 }
 .toolbox-cont {
   height: 5rem;
-  background: #25313c;
+  background: #2d333b;
   display: flex;
   justify-content: start;
   align-items: center;

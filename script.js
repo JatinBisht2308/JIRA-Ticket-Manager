@@ -4,7 +4,7 @@ let plusBtn = document.querySelector(".add-btn");
 let addFlag = false;
 // this will make the modal open or close
 let modalCont = document.querySelector(".modal");
-// select the main container
+// select the main container 
 let mainCont = document.querySelector(".main-container");
 // selecting the text-Cont for deleting the likha hua data after creating the ticket
 let textCont = document.querySelector(".text-cont");
@@ -17,7 +17,10 @@ let allPriorityColor = document.querySelectorAll(".colo");
 
 // accessing the colors for the filter of the ticket on the basis of the color
 let toolBoxColors = document.querySelectorAll(".color");
+let removeButton = document.querySelector(".remove-btn");
 
+// creating the ticket array for the local storage
+let ticketsArray =[];
 // Listerner for the modal priority coloring
 allPriorityColor.forEach((colorElement, index) => {
   colorElement.addEventListener("click", (e) => {
@@ -64,10 +67,16 @@ function generateTicket(ticketColor, ticketTask, ticketHeading) {
   <i class="fa-solid fa-trash-can"></i>
         </div>
   `;
+
+  // create the object of ticket and add to the array
+  let ticketObject = {ticketColor,ticketHeading,ticketTask};
+  ticketsArray.push(ticketObject);
+  localStorage.setItem("jira_tickets",JSON.stringify(ticketsArray));
+  console.log(ticketsArray);
   mainCont.appendChild(ticketCont);
   removeTicket(ticketCont);
 //   handle the color of the ticket by clicking on the ticket
-   handleColorChange(ticketCont); 
+   handleColorChange(ticketCont,ticketTask); 
 }
 
 function removeTicket(ticket){
@@ -80,9 +89,11 @@ function removeTicket(ticket){
 }
 
 // handling the color changing  of the ticket(priority changing)
-function handleColorChange(ticket){
+function handleColorChange(ticket,ticketTask){
     let ticketColor= ticket.querySelector(".ticket-color");
     ticketColor.addEventListener("click",(e) =>{
+      // get ticket index from the tickets array in the local storage.
+      let ticketIndex = getTicketIndex(ticketTask);
         let currentTicketColor = ticketColor.classList[1];
         //  get ticket color index
         let currentColorIndex = colors.findIndex((color) => {
@@ -93,9 +104,25 @@ function handleColorChange(ticket){
         let newTicketColor = colors[newColorIndex];
         ticketColor.classList.remove(currentTicketColor);
         ticketColor.classList.add(newTicketColor);
+        // Modify the of the color in the localstorage.
+        ticketsArray[ticketIndex].ticketColor = newTicketColor;
+        // again set item because the color of the ticket has been changed so it must be changed in the local storage also
+        localStorage.setItem("jira_tickets",JSON.stringify(ticketsArray)); 
     })
 }
 
+
+// this function will get the index of the ticket in the localStorage according to the ticketTasks
+ function getTicketIndex(ticketTask)
+ {
+    for(let i=0;i<ticketsArray.length;i++)
+    {
+        if(ticketsArray[i].ticketTask === ticketTask)
+        {
+            return i;
+        }
+    }
+ }
 // this function will filter the tickets according to the color of the toolbox
 for(let i=0;i<toolBoxColors.length;i++)
 {
@@ -115,5 +142,14 @@ for(let i=0;i<toolBoxColors.length;i++)
                 allTickets[j].style.display = "block";
             }
         }
-   })
+   });
 }
+ //  on click on the tool box cross button we will show all the tickets in the main container
+ removeButton.addEventListener("click",(e)=>{
+  let allTickets2 = document.querySelectorAll(".ticket-cont");
+  for(let z=0;z<allTickets2.length;z++)
+  {
+    console.log("jatin bhasw");
+      allTickets2[z].style.display = "block";
+  }
+})
